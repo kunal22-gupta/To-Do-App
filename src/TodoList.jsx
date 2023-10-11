@@ -2,22 +2,23 @@ import List from "@mui/material/List";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
+import {v4 as uuid} from "uuid"
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
 import { useState } from "react";
 
 const initialTodos = [
-    { id: 0, text: "watch One Piece", completed: false },
-    { id: 1, text: "watch SpyxFamily", completed: false },
-    { id: 2, text: "watch Jujutsu Kaisen", completed: true },
-    { id: 3, text: "watch Made in Abyss", completed: true },
+    { id: uuid(), text: "watch One Piece", completed: false },
+    { id: uuid(), text: "watch SpyxFamily", completed: false },
+    { id: uuid(), text: "watch Jujutsu Kaisen", completed: true },
+    { id: uuid(), text: "watch Made in Abyss", completed: true },
 ];
 
 export default function TodoList() {
     const [todos, setTodos] = useState(initialTodos);
     const [newTodo, setNewTodo] = useState({
-        id: 4,
+        id: uuid(),
         text: "",
         completed: false,
     });
@@ -54,7 +55,7 @@ export default function TodoList() {
         setTodos((currTodos) => {
             return [...currTodos, newTodo];
         });
-        setNewTodo({ id: newTodo.id + 1, text: "", completed: false });
+        setNewTodo({ id: uuid(), text: "", completed: false });
     };
     return (
         <Container maxWidth="sm">
