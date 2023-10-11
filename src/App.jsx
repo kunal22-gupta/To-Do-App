@@ -1,4 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline'
+
+import TodoList from './TodoList'
 import './App.css'
 
 function App() {
@@ -6,6 +8,7 @@ function App() {
   return (
     <>
       <CssBaseline/>
+      <TodoList/>
     </>
   )
 }
