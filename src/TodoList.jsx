@@ -6,14 +6,9 @@ import {v4 as uuid} from "uuid"
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const initialTodos = [
-    { id: uuid(), text: "watch One Piece", completed: false },
-    { id: uuid(), text: "watch SpyxFamily", completed: false },
-    { id: uuid(), text: "watch Jujutsu Kaisen", completed: true },
-    { id: uuid(), text: "watch Made in Abyss", completed: true },
-];
+const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
 export default function TodoList() {
     const [todos, setTodos] = useState(initialTodos);
@@ -22,6 +17,11 @@ export default function TodoList() {
         text: "",
         completed: false,
     });
+
+    // Save todos in my LocalStorage
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
 
     // Remove an item from todo list
     const removeTodo = (id) => {
