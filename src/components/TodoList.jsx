@@ -2,13 +2,13 @@ import List from "@mui/material/List";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
-import {v4 as uuid} from "uuid"
+import { v4 as uuid } from "uuid";
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
 
 import { useState, useEffect } from "react";
 
-const initialTodos = JSON.parse(localStorage.getItem('todos')) || [];
+const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 export default function TodoList() {
     const [todos, setTodos] = useState(initialTodos);
@@ -20,8 +20,8 @@ export default function TodoList() {
 
     // Save todos in my LocalStorage
     useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos))
-    }, [todos])
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     // Remove an item from todo list
     const removeTodo = (id) => {
@@ -68,6 +68,11 @@ export default function TodoList() {
                         bgcolor: "background.paper",
                     }}
                 >
+                    <TodoForm
+                        text={newTodo.text}
+                        handleChange={handleChange}
+                        handleSubmit={handleSubmit}
+                    />
                     {todos.map((item) => (
                         <TodoItem
                             key={item.id}
@@ -76,11 +81,6 @@ export default function TodoList() {
                             toggleCheck={toggleCheck}
                         />
                     ))}
-                    <TodoForm
-                    text={newTodo.text}
-                    handleChange={handleChange}
-                    handleSubmit={handleSubmit}
-                />
                 </List>
             </Box>
         </Container>
