@@ -1,30 +1,30 @@
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import ListItem from "@mui/material/ListItem";
-import { Create } from "@mui/icons-material";
+import { useTodo } from "../context/index.js";
+import { useState } from "react";
 
-export default function TodoForm({text, handleChange, handleSubmit}) {
+export default function TodoForm() {
+    const [todo, setTodo] = useState("");
+
+    const {addTodo} = useTodo();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!todo) return
+        addTodo({todo: todo, isCompleted: false})
+    }
+
     return (
-        <ListItem>
-            <form onSubmit={handleSubmit}>
-                <TextField
-                    id="outlined-basic"
-                    label="New Todo"
-                    variant="outlined"
-                    onChange={handleChange}
-                    value={text}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton aria-label="create todo" edge="end">
-                                    <Create />
-                                </IconButton>
-                            </InputAdornment>
-                        ),
-                    }}
+        <form onSubmit={handleSubmit} className="TodoForm">
+            <div className="container">
+                <input
+                    type="text"
+                    name="todo"
+                    id="todo"
+                    value={todo}
+                    placeholder="Add Todo..."
+                    onChange={(e) => setTodo(e.target.value)}
                 />
-            </form>
-        </ListItem>
+                <i className="ri-add-circle-line"></i>
+            </div>
+        </form>
     );
 }
