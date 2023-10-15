@@ -23,7 +23,7 @@ export default function TodoForm() {
                     placeholder="Add Todo..."
                     onChange={(e) => setTodo(e.target.value)}
                 />
-                <i className="ri-add-circle-line"></i>
+                <button><i className="ri-add-circle-line"></i></button>
             </div>
         </form>
     );
