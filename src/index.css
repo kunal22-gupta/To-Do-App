@@ -5,6 +5,7 @@
     --orange: #D98326;
     --light-orange: #F1ECE6;
     --blue: #76B7CD;
+    --blue-light: rgba(118, 183, 205, 0.8);
     --gray: #969696;
     --light-gray: #C2C2C2;
     --dark-gray: #737373;
@@ -25,4 +26,20 @@
 }
 input, button {
     font: inherit;
+}
+button {
+    transition: background-color .2s ease;
+}
+::placeholder {
+    color: var(--gray);
+}
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 0.938em;
+}
+@media  screen and (min-width: 960px) { /*css for width >= 960px */
+    .container {
+        padding: 0 1em;
+    }
 }
