@@ -4,8 +4,8 @@
     /* Define color theme */
     --orange: #D98326;
     --light-orange: #F1ECE6;
-    --blue: #76B7CD;
-    --blue-light: rgba(118, 183, 205, 0.8);
+    --blue: #3fa0c0;
+    --blue-light: rgb(118, 183, 205);
     --gray: #969696;
     --light-gray: #C2C2C2;
     --dark-gray: #737373;
