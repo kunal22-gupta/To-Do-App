@@ -2,7 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { TodoProvider } from "./context/index";
 import TodoForm from "./components/TodoForm";
-import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
+import logo from "./assests/images/logo.svg"
 
 function App() {
     // Store the todos list data
@@ -10,7 +11,7 @@ function App() {
 
     // add a new todo item to the list
     const addTodo = (todo) => {
-      setTodos((currTodos) => {
+        setTodos((currTodos) => {
             return [{ id: Date.now(), ...todo }, ...currTodos];
         });
     };
@@ -26,7 +27,7 @@ function App() {
     const deleteTodo = (id) => {
         setTodos((currTodos) => {
             return currTodos.filter((currTodo) => {
-                return (currTodo.id !== id);
+                return currTodo.id !== id;
             });
         });
     };
@@ -56,17 +57,25 @@ function App() {
     }, [todos]);
 
     return (
+        <main className="App">
+        <div className="logo">
+            <div className="container">
+                <img src={logo} alt="logo" />
+            </div>
+        </div>
         <TodoProvider
             value={{ todos, addTodo, editTodo, deleteTodo, toggleComplete }}
         >
-            <TodoForm />
-            {
-            todos.map((todo) => (
-                <div key={todo.id}>
-                    <TodoItem todo={todo}/>
-                </div>
-            ))}
+            <div className="container">
+                <TodoForm />
+            </div>
+
+            <div className="container">
+                <TodoList/>
+            </div>
+            
         </TodoProvider>
+        </main>
     );
 }
 

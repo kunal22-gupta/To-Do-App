@@ -1,0 +1,9 @@
+.App .logo {
+    background-color: var(--light-orange);
+}
+.App .logo .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+}

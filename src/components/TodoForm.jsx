@@ -15,7 +15,6 @@ export default function TodoForm() {
 
     return (
         <form onSubmit={handleSubmit} className="TodoForm">
-            <div className="container">
                 <div className="wrapper">
                     <input
                         type="text"
@@ -27,7 +26,6 @@ export default function TodoForm() {
                     />
                     <button>ADD</button>
                 </div>
-            </div>
         </form>
     );
 }

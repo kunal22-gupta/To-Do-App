@@ -1,0 +1,5 @@
+.TodoList {
+    background-color: var(--light-orange);
+    border-radius: 35px;
+    padding: 2.3em 2em;
+}
