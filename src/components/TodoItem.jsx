@@ -46,11 +46,13 @@ export default function TodoItem({ todo }) {
                 <button
                     className="edit-btn"
                     disabled={todo.isCompleted}
-                    onClick={() => {
+                    onClick={(e) => {
                         if (todo.isCompleted) return;
                         if (isEditable) {
                             handleEdit();
                         } else {
+                            // autofocus on input text
+                            e.target.parentElement.previousSibling.focus()
                             setIsEditable((currVal) => !currVal);
                         }
                     }}
