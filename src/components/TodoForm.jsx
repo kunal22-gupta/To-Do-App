@@ -9,8 +9,12 @@ export default function TodoForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // don't do anything if there is no input
         if (!todo) return;
+        // add item in the list
         addTodo({ todo: todo, isCompleted: false });
+        // reset the input field on submission
+        setTodo("");
     };
 
     return (
