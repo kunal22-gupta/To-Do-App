@@ -1,0 +1,39 @@
+.TodoItem {
+    margin-bottom: 1em;
+}
+.TodoItem input[type=checkbox] {
+    accent-color: var(--orange);
+    cursor: pointer;
+}
+.TodoItem input[type=text] {
+    border: none;
+    border-bottom: 1px solid var(--blue);
+    padding: 1em 1em;
+    background-color: transparent;
+    margin: 0 .5em;
+    width: 85%;
+}
+.TodoItem input[type=text].checked {
+    color: var(--light-gray);
+    text-decoration: line-through;
+}
+.TodoItem input[type=text]:focus {
+    outline: none;
+}
+.TodoItem button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 0.8em;
+    cursor: pointer;
+}
+.TodoItem .ri-delete-bin-6-fill {
+    color: var(--red);
+    opacity: 0.3;
+}
+.TodoItem .ri-delete-bin-6-fill:hover {
+    opacity: 0.5;
+}

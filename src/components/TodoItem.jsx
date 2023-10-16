@@ -1,3 +1,4 @@
+import "../css/TodoItem.css";
 import { useState } from "react";
 import { useTodo } from "../context/TodoContext";
 
@@ -11,14 +12,21 @@ export default function TodoItem({ todo }) {
         editTodo(todo.id, { ...todo, todo: todoText });
         setIsEditable(false);
     };
-    const handleToggle = () => {
+    const handleToggle = (e) => {
         toggleComplete(todo.id);
+        const todoText = e.target.nextSibling; // Select the todo input element
+        e.target.checked
+            ? todoText.classList.add("checked")
+            : todoText.classList.remove("checked");
     };
 
     return (
-        <div className="TodoItem">
-            <div className="container">
-                <form onSubmit={(e) => e.preventDefault()}>
+        <form
+            onSubmit={(e) => e.preventDefault()}
+            className="TodoItem"
+            id={`#${todo.id}`}
+        >
+            <div className="wrapper">
                 <input
                     type="checkbox"
                     name="complete"
@@ -35,6 +43,7 @@ export default function TodoItem({ todo }) {
                     onChange={(e) => setTodoText(e.target.value)}
                 />
                 <button
+                    className="edit-btn"
                     disabled={todo.isCompleted}
                     onClick={() => {
                         if (todo.isCompleted) return;
@@ -47,11 +56,10 @@ export default function TodoItem({ todo }) {
                 >
                     <i className="ri-pencil-fill"></i>
                 </button>
-                <button onClick={() => deleteTodo(todo.id)}>
+                <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
                     <i className="ri-delete-bin-6-fill"></i>
                 </button>
-                </form>
             </div>
-        </div>
+        </form>
     );
 }
