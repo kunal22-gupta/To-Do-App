@@ -35,6 +35,7 @@ export default function TodoItem({ todo }) {
                     onChange={handleToggle}
                 />
                 <input
+                    className={todo.isCompleted && "checked"}
                     type="text"
                     name="todo"
                     id="todo"
